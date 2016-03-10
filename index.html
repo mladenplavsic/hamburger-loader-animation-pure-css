@@ -1,0 +1,171 @@
+<style>
+    .hamburger-loader-circle {
+        display: inline-block;
+        background: rgba(0,0,0,0.3);
+        width: 50px;
+        height: 50px;
+        position: relative;
+    }
+    .hamburger-loader-circle div {
+        width: 35%;
+        height: 35%;
+        position: absolute;
+        border-width: 3px;
+        border-style: solid;
+        border-color: white transparent transparent;
+        /*transition: border-radius, width, height, border;*/
+        transition: all .5s;
+        /*box-shadow: 0 0 5px magenta;*/
+        opacity: 1;
+        border-radius: 2px;
+    }
+    .hamburger-loader-circle div:nth-child(1) {
+        top: 32%;
+        left: 25%;
+    }
+    .hamburger-loader-circle div:nth-child(2) {
+        top: 45%;
+        left: 25%;
+        /*opacity: 0.1;*/
+    }
+    .hamburger-loader-circle div:nth-child(3) {
+        top: 60%;
+        left: 25%;
+        /*opacity: 0.1;*/
+    }
+
+    .hamburger-loader-circle.active div {
+        border-radius: 50%;
+        top: 25%;
+        left: 25%;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+    .hamburger-loader-circle.active div:nth-child(1) {
+        animation-name: spin_1_circle;
+        animation-duration: 1000ms;
+    }
+    .hamburger-loader-circle.active div:nth-child(2) {
+        animation-name: spin_2_circle;
+        animation-duration: 600ms;
+        opacity: .8;
+    }
+    .hamburger-loader-circle.active div:nth-child(3) {
+        animation-name: spin_3_circle;
+        animation-duration: 1500ms;
+        opacity: .6;
+    }
+
+    @keyframes spin_1_circle {
+        from {transform:rotate(360deg);}
+        to {transform:rotate(0deg);}
+    }
+    @keyframes spin_2_circle {
+        from {transform:rotate(120deg);}
+        to {transform:rotate(480deg);}
+    }
+    @keyframes spin_3_circle {
+        from {transform:rotate(600deg);}
+        to {transform:rotate(240deg);}
+    }
+
+    .hamburger-loader-hexagon {
+        display: inline-block;
+        background: rgba(0,0,0,0.3);
+        width: 50px;
+        height: 50px;
+        position: relative;
+    }
+    .hamburger-loader-hexagon div {
+        position: absolute;
+        background: white;
+        width: 40%;
+        height: 6%;
+        left: 30%;
+        transition: all .5s;
+    }
+    .hamburger-loader-hexagon div:nth-child(1) {
+        top: 30%;
+    }
+    .hamburger-loader-hexagon div:nth-child(2) {
+        top: 45%;
+        /*opacity: .5;*/
+    }
+    .hamburger-loader-hexagon div:nth-child(3) {
+        top: 62%;
+        /*opacity: .5;*/
+    }
+
+    .hamburger-loader-hexagon.active div {
+        top: 30%;
+        left: 40%;
+        width: 25%;
+        height: 40%;
+        animation-duration: 2000ms;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+    .hamburger-loader-hexagon.active div:nth-child(1) {
+        transform: rotate(90deg);
+        animation-name: spin_1_hexagon;
+    }
+    .hamburger-loader-hexagon.active div:nth-child(2) {
+        transform: rotate(30deg);
+        animation-name: spin_2_hexagon;
+        /*opacity: .8;*/
+    }
+    .hamburger-loader-hexagon.active div:nth-child(3) {
+        transform: rotate(-30deg);
+        animation-name: spin_3_hexagon;
+        /*opacity: .6;*/
+    }
+
+    @keyframes spin_1_hexagon {
+        from {transform:rotate(0deg);}
+        to {transform:rotate(360deg);}
+    }
+    @keyframes spin_2_hexagon {
+        from {transform:rotate(120deg);}
+        to {transform:rotate(480deg);}
+    }
+    @keyframes spin_3_hexagon {
+        from {transform:rotate(240deg);}
+        to {transform:rotate(600deg);}
+    }
+
+</style>
+
+<div class="hamburger-loader-circle" onclick="toggleCircle()">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+
+<div class="hamburger-loader-hexagon" onclick="toggleHexagon()">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+
+<script>
+    var activeCircle;
+    var elementCircle = document.getElementsByClassName('hamburger-loader-circle')[0];
+    function toggleCircle() {
+        activeCircle = !activeCircle;
+        if (activeCircle) {
+            elementCircle.classList.add('active');
+        } else {
+            elementCircle.classList.remove('active');
+        }
+    }
+    var activeHexagon;
+    var elementHexagon = document.getElementsByClassName('hamburger-loader-hexagon')[0];
+    function toggleHexagon() {
+        activeHexagon = !activeHexagon;
+        if (activeHexagon) {
+            elementHexagon.classList.add('active');
+        } else {
+            elementHexagon.classList.remove('active');
+        }
+    }
+</script>
